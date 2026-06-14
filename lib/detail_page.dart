@@ -234,7 +234,7 @@ class _DetailPageState extends State<DetailPage> {
             child: Image.network(widget.imageUrl, fit: BoxFit.cover),
           ),
 
-          // Back button
+          
           Positioned(
             top: 48,
             left: 16,
