@@ -13,14 +13,12 @@ class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   String? selectedMood;
 
-  
   late AnimationController _fadeController;
   late Animation<double> _fadeAnim;
 
   String _displayedWelcome = '';
   final String _fullWelcome = 'Welcome';
 
-  
   late AnimationController _todayController;
   late Animation<double> _todayFade;
 
@@ -40,14 +38,12 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    
     _fadeController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 700),
     );
     _fadeAnim = CurvedAnimation(parent: _fadeController, curve: Curves.easeIn);
 
-    
     _todayController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 900),
@@ -61,7 +57,6 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void _startSequence() async {
-    
     await _fadeController.forward();
 
     for (int i = 1; i <= _fullWelcome.length; i++) {
@@ -91,19 +86,18 @@ class _SplashScreenState extends State<SplashScreen>
   void _navigate(String? query) {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(
-        builder: (_) => HomePage(moodQuery: query),
-      ),
+      MaterialPageRoute(builder: (_) => HomePage(moodQuery: query)),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final selectedQuery = moods
-        .firstWhere(
-          (m) => m['label'] == selectedMood,
-          orElse: () => {'query': null},
-        )['query'] as String?;
+    final selectedQuery =
+        moods.firstWhere(
+              (m) => m['label'] == selectedMood,
+              orElse: () => {'query': null},
+            )['query']
+            as String?;
 
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 10, 10, 10),
@@ -115,7 +109,6 @@ class _SplashScreenState extends State<SplashScreen>
             children: [
               const SizedBox(height: 28),
 
-              
               FadeTransition(
                 opacity: _fadeAnim,
                 child: Row(
@@ -148,7 +141,6 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 4),
 
-            
               FadeTransition(
                 opacity: _fadeAnim,
                 child: Text(
@@ -164,7 +156,6 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 60),
 
-  
               SizedBox(
                 height: 80,
                 child: Center(
@@ -184,7 +175,6 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 44),
 
-              
               FadeTransition(
                 opacity: _fadeAnim,
                 child: Text(
@@ -199,7 +189,6 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
 
-      
               FadeTransition(
                 opacity: _todayFade,
                 child: Text(
@@ -230,7 +219,6 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 12),
 
-      
               FadeTransition(
                 opacity: _fadeAnim,
                 child: Center(
@@ -256,8 +244,12 @@ class _SplashScreenState extends State<SplashScreen>
                             border: Border.all(
                               color: isSelected
                                   ? const Color.fromARGB(179, 220, 207, 207)
-                                  : const Color.fromARGB(255, 236, 217, 217)
-                                      .withValues(alpha: 0.18),
+                                  : const Color.fromARGB(
+                                      255,
+                                      236,
+                                      217,
+                                      217,
+                                    ).withValues(alpha: 0.18),
                               width: 1.1,
                             ),
                             borderRadius: BorderRadius.circular(50),
@@ -283,7 +275,6 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 58),
 
-              // Explore button
               FadeTransition(
                 opacity: _fadeAnim,
                 child: GestureDetector(
