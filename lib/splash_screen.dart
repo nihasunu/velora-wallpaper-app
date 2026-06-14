@@ -13,15 +13,15 @@ class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   String? selectedMood;
 
-  // Page fade (logo, tagline, chips, button)
+  
   late AnimationController _fadeController;
   late Animation<double> _fadeAnim;
 
-  // Typewriter for Welcome
+  
   String _displayedWelcome = '';
   final String _fullWelcome = 'Welcome';
 
-  // Fade for "today?"
+  
   late AnimationController _todayController;
   late Animation<double> _todayFade;
 
@@ -41,14 +41,14 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    // Page fade in
+    
     _fadeController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 700),
     );
     _fadeAnim = CurvedAnimation(parent: _fadeController, curve: Curves.easeIn);
 
-    // "today?" fade in — slow and late
+    
     _todayController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 900),
@@ -62,17 +62,17 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void _startSequence() async {
-    // 1. Fade in logo, tagline, chips, button
+    
     await _fadeController.forward();
 
-    // 2. Typewriter — Welcome letter by letter
+    
     for (int i = 1; i <= _fullWelcome.length; i++) {
       await Future.delayed(const Duration(milliseconds: 85));
       if (!mounted) return;
       setState(() => _displayedWelcome = _fullWelcome.substring(0, i));
     }
 
-    // 3. Pause, then "today?" fades in slowly
+    
     await Future.delayed(const Duration(milliseconds: 350));
     if (!mounted) return;
     _todayController.forward();
@@ -118,7 +118,7 @@ class _SplashScreenState extends State<SplashScreen>
             children: [
               const SizedBox(height: 28),
 
-              // Logo + name — fades with page
+              
               FadeTransition(
                 opacity: _fadeAnim,
                 child: Row(
@@ -151,7 +151,7 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 4),
 
-              // Tagline — fades with page
+              
               FadeTransition(
                 opacity: _fadeAnim,
                 child: Text(
@@ -167,7 +167,7 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 60),
 
-              // Welcome — typewriter
+              
               SizedBox(
                 height: 80,
                 child: Center(
@@ -187,7 +187,7 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 44),
 
-              // "What's your mood" — no animation, shows with page
+              
               FadeTransition(
                 opacity: _fadeAnim,
                 child: Text(
@@ -202,7 +202,7 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
 
-              // "today?" — fades in late and slowly
+              
               FadeTransition(
                 opacity: _todayFade,
                 child: Text(
@@ -219,7 +219,7 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 50),
 
-              // Subtitle
+              
               FadeTransition(
                 opacity: _fadeAnim,
                 child: Text(
@@ -234,7 +234,7 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 12),
 
-              // Mood chips
+              
               FadeTransition(
                 opacity: _fadeAnim,
                 child: Center(
@@ -287,7 +287,7 @@ class _SplashScreenState extends State<SplashScreen>
 
               const SizedBox(height: 58),
 
-              // Explore button
+            
               FadeTransition(
                 opacity: _fadeAnim,
                 child: GestureDetector(
