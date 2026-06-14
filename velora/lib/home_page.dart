@@ -243,7 +243,7 @@ class _HomePageState extends State<HomePage> {
                       child: Image.network(
                         cat['image'],
                         fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) =>
+                        errorBuilder: (_, _, _) =>
                             Container(color: Colors.grey.shade900),
                       ),
                     ),

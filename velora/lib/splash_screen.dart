@@ -245,7 +245,7 @@ class _SplashScreenState extends State<SplashScreen>
                                       Image.network(
                                         mood['image'],
                                         fit: BoxFit.cover,
-                                        errorBuilder: (_, __, ___) => Container(
+                                        errorBuilder: (_, _, _) => Container(
                                           color: Colors.grey.shade300,
                                         ),
                                       ),
